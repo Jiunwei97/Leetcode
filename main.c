@@ -77,11 +77,13 @@ int minMaxDifference(int num) {
 }
 
 int main() {
+    /*
     int num = 11891;
     int result = minMaxDifference(num);
     printf("Difference: %d\n", result);  // Output: 99009
-
+    
     num = 9288;
     printf("Max difference: %d\n", maxDiff(num)); // Output: 8700
+    */    
     return 0;
 }
