@@ -116,6 +116,31 @@ int maximumDifference(int *nums, int numsSize) {
   return max;
 }
 
+// Divide a String Into Groups of Size k, good example for string, 20250622
+char **divideString(char *s, int k, char fill, int *returnSize) {
+  int n = strlen(s);
+  int groupCount = (n + k - 1) / k; // total number of groups
+  char **res = (char **)malloc(groupCount * sizeof(char *));
+  *returnSize = groupCount;
+
+  for (int i = 0; i < groupCount; ++i) {
+    res[i] = (char *)malloc((k + 1) * sizeof(char)); // +1 for '\0'
+
+    for (int j = 0; j < k; ++j) {
+      int idx = i * k + j;
+      if (idx < n) {
+        res[i][j] = s[idx];
+      } else {
+        res[i][j] = fill;
+      }
+    }
+
+    res[i][k] = '\0'; // null-terminate the string
+  }
+
+  return res;
+}
+
 int main() {
   /*
   int num = 11891;
@@ -127,5 +152,19 @@ int main() {
   */
   int array[4] = {1, 5, 2, 10};
   printf("max:%d\n", maximumDifference(array, 4));
+
+  char s[] = "abcdefg";
+  int k = 3;
+  char fill = '?';
+  int returnSize;
+
+  char **result = divideString(s, k, fill, &returnSize);
+
+  for (int i = 0; i < returnSize; ++i) {
+    printf("\"%s\"\n", result[i]);
+    free(result[i]); // free each group
+  }
+  free(result); // free the array of pointers
+
   return 0;
 }
