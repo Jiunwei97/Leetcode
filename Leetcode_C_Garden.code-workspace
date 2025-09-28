@@ -3,5 +3,13 @@
 		{
 			"path": "."
 		}
-	]
+	],
+	"settings": {
+		"files.associations": {
+			"string.h": "c",
+			"math_api.h": "c",
+			"leetcode.h": "c",
+			"leetcode_api.h": "c"
+		}
+	}
 }
